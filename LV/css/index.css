@@ -1,0 +1,208 @@
+/* reset */
+a {
+  text-decoration: none;
+}
+
+/* root */
+:root {
+  --full-width : 100%;
+  --sub-width : 90%;
+  --color : #222;
+  --point-color : #c7ab87;
+  --san-serif : 'Noto Sans KR', sans-serif;
+  --serif : 'Playfair Display', serif;
+  --desc-size : 1em;
+  --title-size : 1.5em;
+}
+
+/* wrap */
+.wrap {
+  width: var(--full-width);
+  min-height: 100%;
+  box-sizing: border-box;
+  font-family: var(--san-serif);
+  color: var(--color);
+  overflow: hidden;
+}
+
+.wrap .container {
+  position: relative;
+}
+
+/* header */
+.header {
+  width: var(--full-width);
+}
+
+.header .header-contents {
+  display: flex;
+  align-items: center;
+  padding: 1.5em 2em;
+}
+
+.header-contents .header-navigation {
+  flex: 1;
+}
+
+.header-contents .header-navigation .header-navigation-items {
+  display: flex;
+}
+
+.header-navigation-items .header-navigation-item > a {
+  color: var(--color);
+  margin-right: 20px;
+}
+
+.header .header-contents .header-icon-items {
+  display: flex;
+  align-items: center;
+}
+
+.header-contents .header-icon-items .header-icon-item {
+  display: inline-block;
+  width: 20px;
+  margin-left: 15px;
+}
+
+.header-icon-item > a > img {
+  width: var(--full-width);
+  opacity: .8;
+}
+
+/* main */
+.main {
+ margin-top: 5em; 
+}
+
+.main .main-wrap {
+  position: relative;
+}
+
+.main .main-wrap .main-logo {
+  position: relative;
+  top: 30px;
+  text-align: center;
+}
+
+.main-logo > a > img {
+  width: var(--full-width);
+  max-width: 850px;
+}
+
+.main-wrap .main-section > img {
+  width: var(--full-width);
+  max-width: 2000px;
+}
+
+.main-wrap .celebrites-section .celebrites-contents {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: var(--sub-width);
+  margin: 0 auto;
+  padding: 10em 0;
+}
+
+.celebrites-section .celebrites-contents .celebrites-items {
+  box-sizing: border-box;
+}
+
+.celebrites-section .celebrites-contents .celebrites-items:nth-child(2) {
+  max-width: 400px;
+}
+
+.celebrites-contents .celebrites-items .celebrites-items-text {
+  padding: 30px;
+}
+
+.celebrites-items .celebrites-items-text span {
+  color: var(--point-color);
+  text-transform: uppercase;
+}
+
+.celebrites-items .celebrites-items-text .section-title {
+  margin: 20px 0;
+}
+
+.celebrites-items .celebrites-items-text > p  {
+  font-size: var(--desc-size);
+  color: #666;
+  line-height: 1.5;
+}
+
+.main .main-wrap .collection-section {
+  background: url(../images/logo-bg.png) no-repeat;  
+  background-position: bottom 50px right 30px;
+  background-size: 500px;
+  background-color: #f6efe8;
+}
+
+.main-wrap .collection-section .collection-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--sub-width);
+  margin: 0 auto;
+  padding: 8em 0 12em;
+}
+
+.collection-section .collection-contents .collection-items {
+  position: relative;
+  flex: 2 1 0;
+}
+
+.collection-section .collection-contents .collection-items:last-child {
+  flex: 1 1 0;
+  /* margin-left: 8em; */
+  display: flex;
+  justify-content: center;
+}
+
+.collection-contents .collection-items .collection-items-image {
+  width: 60%;
+  max-width: 700px;
+  float: right;
+}
+
+.collection-contents .collection-items .collection-items-image:last-child {
+  width: 45%;
+  max-width: 500px;
+  position: absolute;
+  bottom: -80px;
+}
+
+.collection-contents .collection-items .collection-items-text{
+  max-width: 300px;
+}
+
+.collection-items .collection-items-text > p {
+  margin: 30px 0;
+  line-height: 1.5;
+  color: #666;
+}
+/* common */
+.main-wrap .section .section-title {
+  font-family: var(--serif);
+  font-size: var(--title-size);
+  line-height: 1.2;
+  color: var(--color);
+  font-weight: 700;
+}
+
+.main-wrap .section img {
+  width: var(--full-width);
+}
+
+.main-wrap .section .collection-button {
+  display: inline-block;
+  border: 1px solid var(--point-color);
+  padding: 5px 20px;
+  margin-top: 20px;
+  color: var(--point-color);
+  font-family: var(--serif);
+}
+
+.section .collection-button > i {
+  vertical-align: text-top;
+}
+
