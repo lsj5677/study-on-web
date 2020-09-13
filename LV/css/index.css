@@ -40,6 +40,12 @@ a {
   vertical-align: text-top;
 }
 
+.section .collection-button:hover {
+  background-color: var(--point-color);
+  color: var(--color);
+  transition: .3s ease;
+}
+
 /* wrap */
 .wrap {
   width: var(--full-width);
@@ -84,6 +90,24 @@ a {
 .header-navigation-items .header-navigation-item > a {
   color: var(--color);
   margin-right: 20px;
+  position: relative;
+}
+
+.header-navigation-items .header-navigation-item > a::after {
+  position: absolute;
+  content: "";
+  height: 1px;
+  top: 100%;
+  background-color: var(--color);
+  width: 0;
+  right: 0;
+  transition: width 0.3s;
+  z-index: 2;
+}
+
+.header-navigation-items .header-navigation-item > a:hover::after {
+  left: 0;
+  width: 100%;
 }
 
 .header .header-contents .header-icon-items {
