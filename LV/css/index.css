@@ -46,6 +46,10 @@ a {
   transition: .3s ease;
 }
 
+.hidden {
+  display: none;
+}
+
 /* wrap */
 .wrap {
   width: var(--full-width);
@@ -60,13 +64,12 @@ a {
   position: relative;
 }
 
-.hidden {
-  display: none;
-}
-
 /* header */
 .header {
   width: var(--full-width);
+  position: fixed;
+  z-index: 10;
+  background-color: #fff;
 }
 
 .header .header-contents {
@@ -77,10 +80,6 @@ a {
 
 .header .header-contents .header-navigation {
   flex: 1;
-}
-
-.header .header-contents .header-mobile-menubar {
-  width: 20px;
 }
 
 .header-contents .header-navigation .header-navigation-items {
@@ -101,7 +100,7 @@ a {
   background-color: var(--color);
   width: 0;
   right: 0;
-  transition: width 0.3s;
+  transition: width .3s;
   z-index: 2;
 }
 
@@ -110,24 +109,97 @@ a {
   width: 100%;
 }
 
-.header .header-contents .header-icon-items {
-  display: flex;
-  align-items: center;
+.header-contents .header-icon-search {
+  width: 25px;
+  cursor: pointer;
 }
 
-.header-contents .header-icon-items .header-icon-item {
-  display: inline-block;
-  width: 20px;
-}
-
-.header-icon-item > a > img {
+.header-contents .header-icon-search > img {
   width: var(--full-width);
   opacity: .8;
 }
 
+/* search-form */
+
+.search-form-wrap {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 10;
+  text-align: right;
+}
+
+.search-form-wrap .close-button {
+  display: inline-block;
+}
+
+.search-form-wrap .close-button > i {
+  font-size: 40px;
+  padding: 30px 30px 0;
+  cursor: pointer
+}
+
+.search-form-wrap .serach-form-contents {
+  position: relative;
+  top: 20%;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.search-form-wrap .serach-form-contents .search-form  {
+  margin-bottom: 3em;
+}
+
+.search-form-wrap .serach-form-contents .search-form > input {
+  border-width: 0 0 1px;
+  border-color: var(--color);
+  width: 100%;
+  outline: none;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.search-form-wrap .serach-form-contents > span {
+  color: var(--color);
+  font-size: var(--title-size)
+}
+
+.search-form-wrap .serach-form-contents .search-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 2em auto 0;
+}
+
+.serach-form-contents .search-list .search-list-item {
+  flex: 1 1 25%;
+  line-height: 2;
+}
+
+.search-list .search-list-item:after {
+  content: "/";
+  float: right;
+  opacity: .6;
+}
+
+.search-list .search-list-item:nth-child(4):after,
+.search-list .search-list-item:last-child:after {
+  content: none;
+}
+
+.search-list .search-list-item > a {
+  color: #666;
+}
+
+
 /* main */
 .main {
-  margin-top: 5em; 
+  position: relative;
+  top: 5em;
 }
 
 .main .main-wrap {
@@ -212,7 +284,6 @@ a {
 
 .collection-section .collection-contents .collection-items:last-child {
   flex: 1 1 0;
-  /* margin-left: 8em; */
   display: flex;
   justify-content: center;
 }
@@ -295,13 +366,13 @@ a {
   font-size: 13px;
 }
 
-@media (max-width : 1012px){
+@media screen and (max-width : 1012px){
   .shoes-contents .shoes-items .shoes-items-image {
     max-width: 200px;
   }
 }
 
-@media (max-width : 800px) {
+@media screen and (max-width : 800px) {
   .hidden {
     display: inline-block;
   }
@@ -312,32 +383,96 @@ a {
     justify-content: space-between;
   }
 
+  
+  .header .header-contents .header-mobile-menubar {
+    width: 30px;
+    line-height: 0.5;
+    z-index: 20;
+  }
+
+  .header-contents .header-mobile-menubar .menubar-line {
+    display: inline-block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color);
+    border-radius: 10px;
+    opacity: .8;
+    transition: all .3s ease;
+  }
+
+  .header-contents .header-mobile-menubar .menubar-line:last-child {
+    width: 20px;
+  }
+
+  .header-contents .header-mobile-menubar.close-button {
+    position: absolute;
+    right: 20px;
+  }
+
+  .header-contents .header-mobile-menubar.close-button .menubar-line {
+    transform: rotate(45deg);
+    transform-origin: 8px;
+    transition: all .3s ease;
+  }
+
+  .header-contents .header-mobile-menubar.close-button .menubar-line:last-child {
+    width: 30px;
+    transform: rotate(-45deg);
+  }
+
   .header-contents .header-navigation {
-    display: none;    
+    transform: translate(-100%, 0%); 
+    transition: transform .3s ease-in-out;
+  }
+
+  .header-contents .header-navigation.hidden-nav {
+    display: block;
     order: 2;
     min-width: 100%;
     flex-direction: column;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 10;
     height: 100vh;
-    background: rgba(255,255,255,.7);
+    background-color: #fff;   
+    transform: translate(0%, 0%); 
+    transition: transform .3s ease-in-out;
+  }
+
+  .header-navigation .header-navigation-items .close-button {
+    text-align: right;
+    padding: 0 20px;
+  }
+
+  .header-navigation-items .close-button > i {
+    font-size: 40px;
+    opacity: .8;
+    padding: 20px 0;
   }
 
   .header-contents .header-navigation .header-navigation-items {
+    width: 100%;
+    height: 100%;
     flex-direction: column;
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     text-align: center;
-    line-height: 3;
+    line-height: 5;
+    overflow: hidden; 
+  }
+
+  .header-navigation-items .header-navigation-item > a {
+    display: block;
+    margin-right: 0;
   }
 
   /* main */
   .main {
-    margin-top: 0;
+    margin-top: 0;    
+    top: 70px;
   }
 
   .main .main-wrap .main-logo {
@@ -407,6 +542,28 @@ a {
   .footer-sns .footer-sns-items .footer-sns-item {
     flex: 1 1 33%;
     line-height: 2;
+  }
+}
+
+@media screen and (max-width : 600px) {
+  /* search-form */
+  .serach-form-contents .search-list .search-list-item {
+    flex: 1 1 33%;
+  }
+
+  .search-list .search-list-item:nth-child(4):after,
+  .search-list .search-list-item:last-child:after {
+    content: '/';
+  }
+}
+
+@media screen and (max-width : 445px) {
+  /* search-form */
+  .serach-form-contents .search-list .search-list-item {
+    flex: 1 1 50%;
+  }
+  .search-list .search-list-item:nth-child(even):after {
+    content: none;
   }
 }
 
