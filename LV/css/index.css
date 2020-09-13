@@ -14,6 +14,31 @@ a {
   --desc-size : 1em;
   --title-size : 1.5em;
 }
+/* common */
+.main-wrap .section .section-title {
+  font-family: var(--serif);
+  font-size: var(--title-size);
+  line-height: 1.2;
+  color: var(--color);
+  font-weight: 700;
+}
+
+.main-wrap .section img {
+  width: var(--full-width);
+}
+
+.main-wrap .section .collection-button {
+  display: inline-block;
+  border: 1px solid var(--point-color);
+  padding: 5px 20px;
+  margin-top: 20px;
+  color: var(--point-color);
+  font-family: var(--serif);
+}
+
+.section .collection-button > i {
+  vertical-align: text-top;
+}
 
 /* wrap */
 .wrap {
@@ -29,6 +54,10 @@ a {
   position: relative;
 }
 
+.hidden {
+  display: none;
+}
+
 /* header */
 .header {
   width: var(--full-width);
@@ -40,8 +69,12 @@ a {
   padding: 1.5em 2em;
 }
 
-.header-contents .header-navigation {
+.header .header-contents .header-navigation {
   flex: 1;
+}
+
+.header .header-contents .header-mobile-menubar {
+  width: 20px;
 }
 
 .header-contents .header-navigation .header-navigation-items {
@@ -61,7 +94,6 @@ a {
 .header-contents .header-icon-items .header-icon-item {
   display: inline-block;
   width: 20px;
-  margin-left: 15px;
 }
 
 .header-icon-item > a > img {
@@ -71,7 +103,7 @@ a {
 
 /* main */
 .main {
- margin-top: 5em; 
+  margin-top: 5em; 
 }
 
 .main .main-wrap {
@@ -89,12 +121,14 @@ a {
   max-width: 850px;
 }
 
-.main-wrap .main-section > img {
+/* main-section */
+.main-section > img {
   width: var(--full-width);
   max-width: 2000px;
 }
 
-.main-wrap .celebrites-section .celebrites-contents {
+/* celebrites-section */
+.celebrites-section .celebrites-contents {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -130,14 +164,15 @@ a {
   line-height: 1.5;
 }
 
-.main .main-wrap .collection-section {
+/* collection-section */
+.collection-section {
   background: url(../images/logo-bg.png) no-repeat;  
   background-position: bottom 50px right 30px;
   background-size: 500px;
   background-color: #f6efe8;
 }
 
-.main-wrap .collection-section .collection-contents {
+.collection-section .collection-contents {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -180,29 +215,178 @@ a {
   line-height: 1.5;
   color: #666;
 }
-/* common */
-.main-wrap .section .section-title {
-  font-family: var(--serif);
-  font-size: var(--title-size);
-  line-height: 1.2;
-  color: var(--color);
-  font-weight: 700;
+
+/* shoes-section */
+.shoes-section .shoes-contents {
+  display: flex;
+  align-items: center;
 }
 
-.main-wrap .section img {
-  width: var(--full-width);
+.shoes-section .shoes-contents .shoes-items {
+  flex: 1;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.main-wrap .section .collection-button {
+.shoes-contents .shoes-items span {
+  line-height: 1.3;
+}
+
+.shoes-contents .shoes-items .shoes-items-image {
+  max-width: 300px;
+  margin: 30px auto;
+}
+
+/* footer */
+.footer {
+  background-color: #8f7e6f;
+}
+
+.footer .footer-contents {
+  text-align: center;
+  padding: 6em 0;
+}
+
+.footer .footer-contents .footer-logo {
+  max-width: 300px;
   display: inline-block;
-  border: 1px solid var(--point-color);
-  padding: 5px 20px;
-  margin-top: 20px;
-  color: var(--point-color);
-  font-family: var(--serif);
 }
 
-.section .collection-button > i {
-  vertical-align: text-top;
+.footer .footer-contents .footer-desc {
+  font-family: var(--serif);
+  line-height: 1.5;
+  color: #cbb8a7;
+  margin: 4em auto;
 }
+
+.footer-contents .footer-sns .footer-sns-items {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.footer-sns-items .footer-sns-item > a {
+  color: #cbb8a7;
+  font-size: 13px;
+}
+
+@media (max-width : 1012px){
+  .shoes-contents .shoes-items .shoes-items-image {
+    max-width: 200px;
+  }
+}
+
+@media (max-width : 800px) {
+  .hidden {
+    display: inline-block;
+  }
+
+  /* header */
+  .header .header-contents {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .header-contents .header-navigation {
+    display: none;    
+    order: 2;
+    min-width: 100%;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100vh;
+    background: rgba(255,255,255,.7);
+  }
+
+  .header-contents .header-navigation .header-navigation-items {
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 3;
+  }
+
+  /* main */
+  .main {
+    margin-top: 0;
+  }
+
+  .main .main-wrap .main-logo {
+    top: 20px;
+  }
+
+  .main-logo > a > img {
+    max-width: 320px;
+  }
+
+  /* celebrites-section */
+  .celebrites-section .celebrites-contents {
+    padding: 0;
+    flex-wrap: wrap;
+    margin: 3em auto;
+  }
+
+  .celebrites-section .celebrites-contents .celebrites-items {
+    text-align: center;
+  }
+
+  .celebrites-section .celebrites-contents .celebrites-items:first-child {
+    max-width: 400px;
+  }
+
+  /* collection-section */
+  .collection-section {
+    background-size: 300px;
+  }
+  .collection-section .collection-contents {
+    flex-wrap: wrap;
+    padding: 3em 0;
+  }
+
+  .collection-section .collection-contents .collection-items {
+    flex: auto;
+    width: 100%;
+  }
+
+  .collection-contents .collection-items .collection-items-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* shoes section */
+  .shoes-section .shoes-contents {
+    flex-wrap: wrap;
+  }
+  
+  .shoes-section .shoes-contents .shoes-items {
+    flex: auto;
+  }
+
+  .shoes-section .shoes-contents .shoes-items:first-child {
+    margin: 3em 0;
+  }
+
+  /* footer */
+  .footer .footer-contents .footer-desc {
+    padding: 0 2em;
+  }
+
+  .footer-contents .footer-sns .footer-sns-items {
+    flex-wrap: wrap;
+  }
+
+  .footer-sns .footer-sns-items .footer-sns-item {
+    flex: 1 1 33%;
+    line-height: 2;
+  }
+}
+
+
+
+
 
